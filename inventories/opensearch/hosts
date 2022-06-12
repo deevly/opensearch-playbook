@@ -9,16 +9,13 @@ dashboards1 ansible_host=10.0.1.6  ansible_user=root ip=10.0.1.6
 # List all the nodes in the os cluster
 [os-cluster]
 os1
-os2
-os3
-os4
-os5
 
 # List all the Master eligible nodes under this group
 [master]
 os1
-os2
-os3
 
 [dashboards]
 dashboards1
+
+[all:vars]
+ansible_ssh_private_key_file = "~/.ssh/<key-file-path>"

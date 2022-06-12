@@ -1,0 +1,13 @@
+---
+- name: Copy Index Template File
+  ansible.builtin.copy:
+    src: index-template.json
+    dest: /etc/index-template.json
+
+- name: Create Index Template for Memento
+  command: curl -X POST -H 'Content-Type:application/json' -d '@/etc/index-template.json' 'https://{{ hostvars[inventory_hostname]['ansible_host'] }}:9200/_index_template/template-memento' -u 'admin:{{ admin_password}}' -k
+  register: command_output
+
+- name: Print command output
+  debug:
+    var: command_output.stdout_lines

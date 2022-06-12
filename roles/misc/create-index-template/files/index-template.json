@@ -1,0 +1,40 @@
+{
+    "index_patterns": [
+      "memento*"
+    ],
+    "template": {
+      "aliases": {
+        "memento": {}
+      },
+      "settings": {
+        "number_of_shards": 3,
+        "number_of_replicas": 1
+      },
+      "mappings": {
+        "properties": {
+          "visitedTime": {
+            "type": "date",
+            "format": "yyyy-MM-dd'T'HH:mm:ss.SSS"
+          },
+          "user": {
+            "type": "keyword"
+          },
+          "siteDomain": {
+            "type": "keyword"
+          },
+          "keyword": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "url": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
